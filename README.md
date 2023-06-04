@@ -1,19 +1,34 @@
-# EDK2 UEFI firmware for Qualcomm Snapdragon platforms
+# EDK2 UEFI firmware porting attempt for Google Pixel 6 (and other Tensor devices)
 
-![banner_wide_dark](https://user-images.githubusercontent.com/17036722/199902341-b086ec31-8d5c-4766-953a-8b9e1492de8b.png)
+This repo is based on Renegade Project (edk2-msm). 
+It will contain the old files and the file structure for the time being.
 
-![Github](https://img.shields.io/github/downloads/edk2-porting/edk2-sdm845/total)
-![Github](https://img.shields.io/github/v/release/edk2-porting/edk2-sdm845?include_prereleases)
+The folder layout and the way the project builds are bound to change a lot.
 
-## Description
+The current state of the project is that it boots the image successfully (just the Google logo remains on screen), configures the MMU and hangs somewhere in the beginnning of DxeCore. Most likely the memory map is incorrect.
 
-This repository aims to provide an usable EDK2 UEFI environment for modern Qualcomm SoCs.
+## Enabling PStore debugging (necessary for now)  
+Run the following commands:
+```
+fastboot oem ramdump usb
+fastboot oem ramdump compression disable
+fastboot oem ramdump encryption disable
+fastboot oem ramdump config
+```
 
-It can be used as a boot manager for multi-booting mainline Linux, Android and optionally Windows on certain SoCs.
+As you can see, these commands will turn your phone into a security hole, so only run them if you are comfortable with that.
 
-## User guide and documentations
+## Building and running
+Simply execute ``./raven-build-and-run.sh`` with your phone eplugged in and in fastboot. After double clicking the power button and waiting for a minute, hold the volume down to get back into fastboot and to get logs
 
-Please visit [Renegade Project Wiki](https://wiki.renegade-project.cn/)
+[This](https://pastebin.com/NnC4Bvs8) is what you should expect for now.
+
+## Memory map
+The memory map located at ``Silicon/Google/Tensor/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.c`` is based off of the ouput of ``cat /proc/iomem`` and almost certainly needs work on it done.
+
+## Telegram group chat and contributing to the project
+Any and all help i can give or receive should go through this [Telegram group](https://t.me/+qsKNlVPyjSo3NGM0)
+
 
 ## Acknowledgements
 - Gustave Monce and his [SurfaceDuoPkg](https://github.com/WOA-Project/SurfaceDuoPkg)
@@ -24,5 +39,6 @@ Please visit [Renegade Project Wiki](https://wiki.renegade-project.cn/)
 - BigfootACA and his [SimpleInit](https://github.com/BigfootACA/simple-init) and [LinuxSimpleMassStorage](https://github.com/BigfootACA/linux-simple-mass-storage)
 - fxsheep and his original edk2-sagit
 - All the developers and members of [Renegade Project](https://github.com/edk2-porting/) for offering efforts, equipments, valuable documents and more
+
 ## License
 All code except drivers in GPLDriver directory are licensed under BSD 2-Clause. GPL Drivers are licensed under GPLv2 license.
