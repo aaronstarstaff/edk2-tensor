@@ -14,3 +14,4 @@ ramdisk
 *.rej
 *.orig
 *.fd
+logs
