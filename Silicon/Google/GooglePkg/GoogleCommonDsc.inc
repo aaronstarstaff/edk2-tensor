@@ -58,7 +58,7 @@
   gEfiMdeModulePkgTokenSpaceGuid.PcdInstallAcpiSdtProtocol|TRUE
 
 [PcdsFixedAtBuild.common]
-  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0x9FF90000
+  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0x90600000
   gArmPlatformTokenSpaceGuid.PcdCPUCorePrimaryStackSize|0x20000
 
   gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"Renegade Project"
@@ -80,7 +80,8 @@
   gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x807B55FF
 !else
   gEfiMdePkgTokenSpaceGuid.PcdDebugPropertyMask|0x0f
-  gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x807B55FF
+  gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x804B55CF #everything except memory related stuff
+  #gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x80000000
 !endif
 # Use 0x807B55FF to enable all debug messages
   gEfiMdePkgTokenSpaceGuid.PcdReportStatusCodePropertyMask|0x06
@@ -257,9 +258,8 @@
   UefiDevicePathLib|MdePkg/Library/UefiDevicePathLib/UefiDevicePathLib.inf
   UefiScsiLib|MdePkg/Library/UefiScsiLib/UefiScsiLib.inf
   
+!if $(PSTORE) == 1
   SerialPortLib|Silicon/Google/GooglePkg/Library/InMemorySerialPortLib/InMemorySerialPortLib.inf
-!if $(USE_UART) == 1
-  SerialPortLib|Silicon/Google/GooglePkg/Library/QcomGeniSerialPortLib/QcomGeniSerialPortLib.inf
 !else
   SerialPortLib|Silicon/Google/GooglePkg/Library/FrameBufferSerialPortLib/FrameBufferSerialPortLib.inf
 !endif
@@ -352,12 +352,11 @@
   # PrePI
   Silicon/Google/GooglePkg/PrePi/PrePi.inf {
     <LibraryClasses>
-    !if $(USE_UART) == 1
-      SerialPortLib|Silicon/Google/GooglePkg/Library/QcomGeniSerialPortLib/QcomGeniSerialPortLib.inf
+    !if $(PSTORE) == 1
+      SerialPortLib|Silicon/Google/GooglePkg/Library/InMemorySerialPortLib/InMemorySerialPortLib.inf
     !else
       SerialPortLib|Silicon/Google/GooglePkg/Library/FrameBufferSerialPortLib/FrameBufferSerialPortLib.inf
     !endif
-      SerialPortLib|Silicon/Google/GooglePkg/Library/InMemorySerialPortLib/InMemorySerialPortLib.inf
   }
 
   # DXE
@@ -378,15 +377,10 @@
   # Processor Core Services
   ArmPkg/Drivers/CpuDxe/CpuDxe.inf {
     <LibraryClasses>
-    !if $(USE_UART) == 1
-      SerialPortLib|Silicon/Google/GooglePkg/Library/QcomGeniSerialPortLib/QcomGeniSerialPortLib.inf
-    !else
-    !if $(NO_EXCEPTION_DISPLAY) == TRUE
-      SerialPortLib|Common/edk2/MdePkg/Library/BaseSerialPortLibNull/BaseSerialPortLibNull.inf
+    !if $(PSTORE) == 1
+      SerialPortLib|Silicon/Google/GooglePkg/Library/InMemorySerialPortLib/InMemorySerialPortLib.inf
     !else
       SerialPortLib|Silicon/Google/GooglePkg/Library/FrameBufferSerialPortLib/FrameBufferSerialPortLib.inf
-      SerialPortLib|Silicon/Google/GooglePkg/Library/InMemorySerialPortLib/InMemorySerialPortLib.inf
-    !endif
     !endif
   }
   ArmPkg/Drivers/TimerDxe/TimerDxe.inf

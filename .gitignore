@@ -15,3 +15,4 @@ ramdisk
 *.orig
 *.fd
 logs
+tools/magiskboot/kernel

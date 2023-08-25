@@ -17,7 +17,7 @@
 
 [PcdsFixedAtBuild.common]
 
-  gQcomTokenSpaceGuid.PcdMipiFrameBufferAddress|0xfd90c000 #to be fixed, set here because god knows what's the real address
+  gQcomTokenSpaceGuid.PcdMipiFrameBufferAddress|0xFAC00000
   gQcomTokenSpaceGuid.PcdMipiFrameBufferWidth|1440
   gQcomTokenSpaceGuid.PcdMipiFrameBufferHeight|3120
 
@@ -27,9 +27,3 @@
 
   # Simple Init
   gSimpleInitTokenSpaceGuid.PcdGuiDefaultDPI|440
-
-  #uncomment section underneath and comment out the above section to use full display, including the notch
-  #gQcomTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|32|UINT32|0x0000a403
-  #gQcomTokenSpaceGuid.PcdMipiFrameBufferVisibleWidth|1080|UINT32|0x0000a404
-  #gQcomTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|2246|UINT32|0x0000a405
-

@@ -23,7 +23,8 @@
 !include Silicon/Google/GooglePkg/GoogleCommonDsc.inc
 
 [PcdsFixedAtBuild.common]
-  gArmTokenSpaceGuid.PcdSystemMemoryBase|0x8AF000000         # Starting address
+  #gArmTokenSpaceGuid.PcdSystemMemoryBase|0x8AF000000         # Starting address
+  gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000        # Starting address
   gArmTokenSpaceGuid.PcdSystemMemorySize|0x0FDFA0000         # Limit to 4GB Size here
 
   gArmTokenSpaceGuid.PcdCpuVectorBaseAddress|0xfd902000     # CPU Vectors
@@ -37,12 +38,12 @@
   gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|25
 
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x00000850
-  gEmbeddedTokenSpaceGuid.PcdPrePiStackBase|0x90600000      # UEFI Stack
+  gEmbeddedTokenSpaceGuid.PcdPrePiStackBase|0xfa800000      # UEFI Stack
   gEmbeddedTokenSpaceGuid.PcdPrePiStackSize|0x00040000      # 256K stack
   #gEmbeddedTokenSpaceGuid.PcdPrePiCpuIoSize|44
 
-  gQcomTokenSpaceGuid.PcdUefiMemPoolBase|0x97400000         # DXE Heap base address
-  gQcomTokenSpaceGuid.PcdUefiMemPoolSize|0x1fe00000         # UefiMemorySize, DXE heap size
+  gQcomTokenSpaceGuid.PcdUefiMemPoolBase|0x882000000         # DXE Heap base address
+  gQcomTokenSpaceGuid.PcdUefiMemPoolSize|0x2E000000         # UefiMemorySize, DXE heap size
   
   gQcomTokenSpaceGuid.PcdMipiFrameBufferAddress|0xfd90c000
 
@@ -52,7 +53,7 @@
   #
   # SimpleInit
   #
-  gSimpleInitTokenSpaceGuid.PcdDeviceTreeStore|0x83300000
+  gSimpleInitTokenSpaceGuid.PcdDeviceTreeStore|0xe2500000 #random free space
   gSimpleInitTokenSpaceGuid.PcdLoggerdUseConsole|FALSE
 
 [LibraryClasses.common]

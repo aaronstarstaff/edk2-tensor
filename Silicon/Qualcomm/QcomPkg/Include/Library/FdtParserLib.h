@@ -45,10 +45,10 @@ GetFdt(VOID)
   #else
   FdtAddress = *(EFI_PHYSICAL_ADDRESS*)FixedPcdGet64 (PcdDeviceTreeStore);
 
-  if (FdtAddress < PcdGet64(PcdSystemMemoryBase)){
-    DEBUG((EFI_D_INFO, "Invalid Device Tree Address\n"));
-    return NULL;
-  }
+  // if (FdtAddress < PcdGet64(PcdSystemMemoryBase)){
+  //   DEBUG((EFI_D_INFO, "Invalid Device Tree Address\n"));
+  //   return NULL;
+  // }
   #endif
 
   DEBUG((EFI_D_INFO, "Device Tree Address: 0x%016lx\n", FdtAddress));

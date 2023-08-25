@@ -20,6 +20,7 @@ function _help(){
 	echo "	--outputdir, -O:         output folder."
 	echo "	--boot, -b:              fastboot boot image."
 	echo "	--fixclang, -f:          fix build using Clang by suppressing -Os flag."
+	echo "	--pstore, -p:            use InMemorySerialPortLib."
 	echo "	--installer-zip, -z:     generate flashable installer zip."
 	echo "	--help, -h:              show this help."
 	echo
@@ -137,6 +138,7 @@ function _build(){
 		-D NO_EXCEPTION_DISPLAY="${NO_EXCEPTION_DISPLAY}" \
 		-D FD_BASE="${FD_BASE}" -D FD_SIZE="${FD_SIZE}" \
 		-D ENABLE_LINUX_UTILS="${ENABLE_LINUX_UTILS}" \
+		-D PSTORE="${PSTORE}" \
 		||return "$?"
 	_call_hook platform_build_kernel||return "$?"
 	_call_hook platform_build_bootimg||return "$?"
@@ -172,6 +174,7 @@ CHINESE=false
 CLEAN=false
 DISTCLEAN=false
 TOOLCHAIN=CLANG38
+PSTORE=false
 export FIX_CLANG=0
 SOC_VENDOR=Qualcomm
 USE_UART=0
@@ -181,7 +184,7 @@ export GEN_ACPI=false
 export GEN_ROOTFS=true
 export GEN_INSTALLER_ZIP=false
 export FASTBOOT=false
-OPTS="$(getopt -o t:d:hfabczACDO:r:u -l toolchain:,device:,help,fixclang,all,boot,chinese,acpi,skip-rootfs-gen,no-exception-disp,installer-zip,uart,clean,distclean,outputdir:,release: -n 'build.sh' -- "$@")"||exit 1
+OPTS="$(getopt -o t:d:hfabczACDO:r:u -l toolchain:,device:,help,fixclang,all,boot,chinese,acpi,skip-rootfs-gen,no-exception-disp,installer-zip,uart,pstore,clean,distclean,outputdir:,release: -n 'build.sh' -- "$@")"||exit 1
 eval set -- "${OPTS}"
 while true
 do	case "${1}" in
@@ -199,6 +202,7 @@ do	case "${1}" in
 		-t|--toolchain) TOOLCHAIN="${2}";shift 2;;
 		-u|--uart) USE_UART=1;shift;;
 		-f|--fixclang) FIX_CLANG=1;shift;;
+		-p|--pstore) PSTORE=1;shift;;
 		-z|--installer-zip) GEN_INSTALLER_ZIP=true;ENABLE_LINUX_UTILS=1;shift;;
 		-h|--help) _help 0;shift;;
 		--) shift;break;;
