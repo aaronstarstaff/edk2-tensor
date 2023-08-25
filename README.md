@@ -1,13 +1,15 @@
-# EDK2 UEFI firmware porting attempt for Google Pixel 6 (and other Tensor devices)
+# EDK2 UEFI firmware porting attempt for Google Pixel 6 Pro (and other Tensor devices)
 
 This repo is based on Renegade Project (edk2-msm). 
 It will contain the old files and the file structure for the time being.
 
 The folder layout and the way the project builds are bound to change a lot.
 
-The current state of the project is that it boots the image successfully (just the Google logo remains on screen), configures the MMU and hangs somewhere in the beginnning of DxeCore. Most likely the memory map is incorrect.
+The current state of the project is that it boots the image successfully and throws SError exception pointing to the line enabling exceptions. The exception probably occurs before the exceptions are enabled. Probably the memory map is incorrect.
 
-## Enabling PStore debugging (necessary for now)  
+It is possible to boot fully if you comment out the line enabling exceptions ([this one](https://github.com/tianocore/edk2/blob/00b51e0d78a547dd78119ec44fcc74a01b6f79c8/ArmPkg/Drivers/CpuDxe/Exception.c#L66)). Note that the watchdog will timeout after a minute and reboot the phone.
+
+## Enabling PStore debugging 
 Run the following commands:
 ```
 fastboot oem ramdump usb
@@ -19,12 +21,10 @@ fastboot oem ramdump config
 As you can see, these commands will turn your phone into a security hole, so only run them if you are comfortable with that.
 
 ## Building and running
-Simply execute ``./raven-build-and-run.sh`` with your phone eplugged in and in fastboot. After double clicking the power button and waiting for a minute, hold the volume down to get back into fastboot and to get logs
-
-[This](https://pastebin.com/NnC4Bvs8) is what you should expect for now.
+Simply execute ``./raven-build-and-run.sh`` with your phone plugged in and in fastboot. After double clicking the power button and waiting for a minute, hold the volume down to get back into fastboot and to get logs
 
 ## Memory map
-The memory map located at ``Silicon/Google/Tensor/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.c`` is based off of the ouput of ``cat /proc/iomem`` and almost certainly needs work on it done.
+The memory map located at ``Silicon/Google/Tensor/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.c`` is based off of the ouput of ``cat /proc/iomem`` ([formatted nicely here](https://pastebin.com/XcxrZ3VM)) and almost certainly needs work on it done.
 
 ## Telegram group chat and contributing to the project
 Any and all help i can give or receive should go through this [Telegram group](https://t.me/+qsKNlVPyjSo3NGM0)
