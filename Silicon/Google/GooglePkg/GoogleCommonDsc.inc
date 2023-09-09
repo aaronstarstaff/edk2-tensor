@@ -58,7 +58,7 @@
   gEfiMdeModulePkgTokenSpaceGuid.PcdInstallAcpiSdtProtocol|TRUE
 
 [PcdsFixedAtBuild.common]
-  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0x90600000
+  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0xfa800000
   gArmPlatformTokenSpaceGuid.PcdCPUCorePrimaryStackSize|0x20000
 
   gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"Renegade Project"

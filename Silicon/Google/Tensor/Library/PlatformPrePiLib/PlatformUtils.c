@@ -46,5 +46,5 @@ VOID PlatformInitialize()
   UartInit();
 
   // Disable WatchDog Timer
-  SetWatchdogState(FALSE);
+  //SetWatchdogState(FALSE);
 }
