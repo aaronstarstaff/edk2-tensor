@@ -5,9 +5,11 @@ It will contain the old files and the file structure for the time being.
 
 The folder layout and the way the project builds are bound to change a lot.
 
-The current state of the project is that it boots the image successfully and throws SError exception pointing to the line enabling exceptions. The exception probably occurs before the exceptions are enabled. Probably the memory map is incorrect.
+Note that the watchdog will timeout after a minute and reboot the phone. I'll keep that for now as it's convinient.
 
-It is possible to boot fully if you comment out the line enabling exceptions ([this one](https://github.com/tianocore/edk2/blob/00b51e0d78a547dd78119ec44fcc74a01b6f79c8/ArmPkg/Drivers/CpuDxe/Exception.c#L66)). Note that the watchdog will timeout after a minute and reboot the phone.
+
+| ![IMG_20230909_211830](https://github.com/TAOcroatia/edk2-tensor/assets/34100820/fda6cfe4-c227-48e2-acb1-f5ffc232818e)  | ![IMG_20230909_211838](https://github.com/TAOcroatia/edk2-tensor/assets/34100820/c53d72fa-ca90-4c11-b3aa-984fd269efc2) | ![IMG_20230909_211841](https://github.com/TAOcroatia/edk2-tensor/assets/34100820/a8c38a8d-34a5-419c-a4b6-22ccb0019f68)  | ![IMG_20230909_211902](https://github.com/TAOcroatia/edk2-tensor/assets/34100820/cb442744-7e25-413c-b2de-ab99aa6373b1) |
+| ------------- | ------------- | ------------- | ------------- |
 
 ## Enabling PStore debugging 
 Run the following commands:
@@ -21,10 +23,12 @@ fastboot oem ramdump config
 As you can see, these commands will turn your phone into a security hole, so only run them if you are comfortable with that.
 
 ## Building and running
-Simply execute ``./raven-build-and-run.sh`` with your phone plugged in and in fastboot. After double clicking the power button and waiting for a minute, hold the volume down to get back into fastboot and to get logs
+Simply execute ``./raven-build-and-run.sh`` with your phone plugged in and in fastboot. After double clicking the power button and waiting for a minute, hold the volume down to get back into fastboot and to get logs (if you run it with -p)
+
+[This](https://pastebin.com/NnC4Bvs8) is what you should expect for now.
 
 ## Memory map
-The memory map located at ``Silicon/Google/Tensor/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.c`` is based off of the ouput of ``cat /proc/iomem`` ([formatted nicely here](https://pastebin.com/XcxrZ3VM)) and almost certainly needs work on it done.
+The memory map located at ``Silicon/Google/Tensor/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.c`` is based off of the ouput of ``cat /proc/iomem`` ([formatted nicely here](https://pastebin.com/XcxrZ3VM)) and almost certainly needs work on it done, along with PcdSystemMemoryBase and Size in tensor.dsc.
 
 ## Telegram group chat and contributing to the project
 Any and all help i can give or receive should go through this [Telegram group](https://t.me/+qsKNlVPyjSo3NGM0)
