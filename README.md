@@ -25,8 +25,6 @@ As you can see, these commands will turn your phone into a security hole, so onl
 ## Building and running
 Simply execute ``./raven-build-and-run.sh`` with your phone plugged in and in fastboot. After double clicking the power button and waiting for a minute, hold the volume down to get back into fastboot and to get logs (if you run it with -p)
 
-[This](https://pastebin.com/NnC4Bvs8) is what you should expect for now.
-
 ## Memory map
 The memory map located at ``Silicon/Google/Tensor/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.c`` is based off of the ouput of ``cat /proc/iomem`` ([formatted nicely here](https://pastebin.com/XcxrZ3VM)) and almost certainly needs work on it done, along with PcdSystemMemoryBase and Size in tensor.dsc.
 
