@@ -17,5 +17,5 @@
 [Packages]
   ArmPkg/ArmPkg.dec
   MdePkg/MdePkg.dec
-  Silicon/Qualcomm/QcomPkg/QcomPkg.dec
+  Silicon/Google/GooglePkg/GooglePkg.dec
   Platform/RenegadePkg/RenegadePkg.dec

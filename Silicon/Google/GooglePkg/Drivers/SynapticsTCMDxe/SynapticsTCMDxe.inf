@@ -15,7 +15,7 @@
   MdePkg/MdePkg.dec
   ArmPkg/ArmPkg.dec
   EmbeddedPkg/EmbeddedPkg.dec
-  Silicon/Qualcomm/QcomPkg/QcomPkg.dec
+  Silicon/Google/GooglePkg/GooglePkg.dec
 
 [BuildOptions.AARCH64]
   GCC:*_*_*_CC_FLAGS = -Werror -Wno-error=unused-variable

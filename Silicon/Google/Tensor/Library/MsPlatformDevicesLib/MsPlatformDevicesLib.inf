@@ -27,8 +27,8 @@
   MdePkg/MdePkg.dec
   MdeModulePkg/MdeModulePkg.dec
   Platform/RenegadePkg/RenegadePkg.dec
-  Silicon/Qualcomm/QcomPkg/QcomPkg.dec
-  Silicon/Qualcomm/sdm845/sdm845.dec
+  Silicon/Google/GooglePkg/GooglePkg.dec
+  Silicon/Google/Tensor/Tensor.dec
 
 [LibraryClasses]
   BaseMemoryLib

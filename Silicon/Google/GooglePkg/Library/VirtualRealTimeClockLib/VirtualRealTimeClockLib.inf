@@ -30,7 +30,7 @@
   ArmPkg/ArmPkg.dec
   MdePkg/MdePkg.dec
   EmbeddedPkg/EmbeddedPkg.dec
-  Silicon/Qualcomm/QcomPkg/QcomPkg.dec
+  Silicon/Google/GooglePkg/GooglePkg.dec
 
 [LibraryClasses]
   IoLib
