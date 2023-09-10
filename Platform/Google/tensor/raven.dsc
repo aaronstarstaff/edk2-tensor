@@ -26,4 +26,4 @@
   gRenegadePkgTokenSpaceGuid.PcdDeviceCodeName|"raven"
 
   # Simple Init
-  gSimpleInitTokenSpaceGuid.PcdGuiDefaultDPI|440
+  gSimpleInitTokenSpaceGuid.PcdGuiDefaultDPI|512
