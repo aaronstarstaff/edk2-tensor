@@ -4,7 +4,7 @@ function platform_build_kernel(){
 		"${WORKSPACE}/Build/${DEVICE}/${_MODE}_${TOOLCHAIN}/FV/${SOC_PLATFORM}_UEFI.fd" \
 		> "${WORKSPACE}/Build/${DEVICE}/${_MODE}_${TOOLCHAIN}/FV/${SOC_PLATFORM}_UEFI.fd-bootshim" \
 		||return "$?"
-	gzip -c \
+	lz4 -c \
 		< "${WORKSPACE}/Build/${DEVICE}/${_MODE}_${TOOLCHAIN}/FV/${SOC_PLATFORM}_UEFI.fd-bootshim" \
 		> "${WORKSPACE}/uefi-${DEVICE}.img.gz" \
 		||return "$?"
@@ -25,7 +25,7 @@ function platform_build_bootimg(){
 		--tags_offset 0x00000000 \
 		--os_version "${BOOTIMG_OS_VERSION}" \
 		--os_patch_level "${BOOTIMG_OS_PATCH_LEVEL}" \
-		--header_version 1 \
+		--header_version 4 \
 		-o "${OUTDIR}/boot-${DEVICE}${EXT}.img" \
 		||return "$?"
 }
