@@ -66,6 +66,7 @@
   PlatformPrePiLib|Silicon/Google/Tensor/Library/PlatformPrePiLib/PlatformPrePiLib.inf
   MsPlatformDevicesLib|Silicon/Google/Tensor/Library/MsPlatformDevicesLib/MsPlatformDevicesLib.inf
   SOCSmbiosInfoLib|Silicon/Google/Tensor/Library/SOCSmbiosInfoLib/SOCSmbiosInfoLib.inf
+  ResetSystemLib|Silicon/Google/Tensor/Library/ResetSystemLib/ResetSystemLib.inf
 
 [Components.common]
   #
