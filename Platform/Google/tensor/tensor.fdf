@@ -132,6 +132,9 @@ READ_LOCK_STATUS   = TRUE
   # INF Silicon/Qualcomm/sdm845/Drivers/sdm845Dxe/sdm845Dxe.inf
   INF Silicon/Google/GooglePkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 
+  INF Silicon/Google/GooglePkg/Drivers/KeypadDxe/KeypadDxe.inf
+  INF Silicon/Google/GooglePkg/Drivers/GenericKeypadDeviceDxe/GenericKeypadDeviceDxe.inf
+
   #
   # Helper drivers
   #

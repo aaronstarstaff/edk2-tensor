@@ -521,6 +521,10 @@
   # Simple framebuffer
   Silicon/Google/GooglePkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 
+  # Keypad
+  Silicon/Google/GooglePkg/Drivers/KeypadDxe/KeypadDxe.inf
+  Silicon/Google/GooglePkg/Drivers/GenericKeypadDeviceDxe/GenericKeypadDeviceDxe.inf
+
   # ACPI
   # We use pre-built ACPI tables, so only core components are loaded
   MdeModulePkg/Universal/Acpi/AcpiTableDxe/AcpiTableDxe.inf

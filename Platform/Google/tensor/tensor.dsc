@@ -60,7 +60,7 @@
 
   # Ported from SurfaceDuoPkg
   AslUpdateLib|Silicon/Google/GooglePkg/Library/DxeAslUpdateLib/DxeAslUpdateLib.inf
-
+  KeypadDeviceImplLib|Silicon/Google/Tensor/Library/KeypadDeviceImplLib/KeypadDeviceImplLib.inf
   PlatformMemoryMapLib|Silicon/Google/Tensor/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.inf
   PlatformPeiLib|Silicon/Google/Tensor/Library/PlatformPeiLib/PlatformPeiLib.inf
   PlatformPrePiLib|Silicon/Google/Tensor/Library/PlatformPrePiLib/PlatformPrePiLib.inf
