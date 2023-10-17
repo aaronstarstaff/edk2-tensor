@@ -60,12 +60,13 @@
 
   # Ported from SurfaceDuoPkg
   AslUpdateLib|Silicon/Google/GooglePkg/Library/DxeAslUpdateLib/DxeAslUpdateLib.inf
-
+  KeypadDeviceImplLib|Silicon/Google/Tensor/Library/KeypadDeviceImplLib/KeypadDeviceImplLib.inf
   PlatformMemoryMapLib|Silicon/Google/Tensor/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.inf
   PlatformPeiLib|Silicon/Google/Tensor/Library/PlatformPeiLib/PlatformPeiLib.inf
   PlatformPrePiLib|Silicon/Google/Tensor/Library/PlatformPrePiLib/PlatformPrePiLib.inf
   MsPlatformDevicesLib|Silicon/Google/Tensor/Library/MsPlatformDevicesLib/MsPlatformDevicesLib.inf
   SOCSmbiosInfoLib|Silicon/Google/Tensor/Library/SOCSmbiosInfoLib/SOCSmbiosInfoLib.inf
+  ResetSystemLib|Silicon/Google/Tensor/Library/ResetSystemLib/ResetSystemLib.inf
 
 [Components.common]
   #

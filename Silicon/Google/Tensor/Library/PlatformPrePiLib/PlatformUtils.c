@@ -24,6 +24,19 @@ VOID InitializeSharedUartBuffers(VOID)
   *(pFbConPosition + 1) = 0;
 }
 
+VOID DisableWDT(VOID)
+{
+	UINT32 wtcon;
+	// disable cl0
+	wtcon = MmioRead32(0x10060000);
+	wtcon &= ~((1 << 5) | (1 << 0));
+	MmioWrite32(0x10060000, wtcon);
+	// disable cl1
+	wtcon = MmioRead32(0x10070000);
+	wtcon &= ~((1 << 5) | (1 << 0));
+	MmioWrite32(0x10070000, wtcon);
+}
+
 VOID UartInit(VOID)
 {
   SerialPortInitialize();
@@ -46,5 +59,5 @@ VOID PlatformInitialize()
   UartInit();
 
   // Disable WatchDog Timer
-  //SetWatchdogState(FALSE);
+  DisableWDT();
 }
